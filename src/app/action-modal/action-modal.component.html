@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-primary-title">{{modelFunction}} medicine</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body centered">
+        <form [formGroup]="medicineForm" (ngSubmit)="doAction()">
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label>Medicine Name</label>
+                  <input formControlName="medName" name="name" id="medName" [(ngModel)]="medName" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && errrorFunction.medName.errors }">
+                  <div *ngIf="submitted && errrorFunction.medName.errors" class="invalid-feedback">
+                        <div *ngIf="errrorFunction.medName.errors.required">Medicine name is required</div>
+                  </div>
+                </div>
+            </div>
+              
+                <div class="form-group">
+                  <label>Desription</label>
+                  <textarea formControlName="desription" name="desc" id="desc" [(ngModel)]="desription" class="form-control" rows="2" [ngClass]="{ 'is-invalid': submitted && errrorFunction.desription.errors}"></textarea>
+                  <div *ngIf="submitted && errrorFunction.desription.errors" class="invalid-feedback">
+                        <div *ngIf="errrorFunction.desription.errors.required">Description is required</div>
+                  </div>
+                </div>
+              
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <label>Quantity</label>
+                    <input formControlName="quantity" name="quantity" id="quantity" [(ngModel)]="quantity" type="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && errrorFunction.quantity.errors }">
+                    <div *ngIf="submitted && errrorFunction.quantity.errors" class="invalid-feedback">
+                            <div *ngIf="errrorFunction.quantity.errors.required">Quantity is required</div>
+                    </div>
+                    </div>
+                
+                    <div class="form-group col-md-6">
+                        <label>Price</label>
+                        <input formControlName="price" name="price" id="price" [(ngModel)]="price" type="number" class="form-control" [ngClass]="{ 'is-invalid': submitted && errrorFunction.price.errors }">
+                        <div *ngIf="submitted && errrorFunction.price.errors" class="invalid-feedback">
+                            <div *ngIf="errrorFunction.price.errors.required">Price is required</div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                  <button class="{{actionButtonclass}} btn btn-block">{{btnName}}</button>
+                </div>    
+        </form>
+    <!--Body-->
+</div>

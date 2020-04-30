@@ -1,0 +1,44 @@
+<div class="container-fluid pl-0 pr-0">
+    <div class="jumbotron pt-3 pb-3 mb-0 text-center">
+        <img width="250px" class="rounded" height="200px" src="../../assets/Campaign-calls-for-more-effort-to-combat-fake-medicines.gif">
+        <h1>Quick add medicine</h1>
+    </div>
+    <div class="row pt-2 pb-2 pl-4 pr-4 border-bottom">
+        <div class="col-lg-12">
+            <button type="button" (click)="openActionModal('Add','')" class="float-right rounded btn-success">Add Medicine</button>
+        </div>
+    </div>
+
+    <div class="row pt-4 ml-2 pl-2 pr-4">
+        <h2>List of medicines:</h2>
+    </div>
+    <div class="row table-responsive pt-2 pb-4 pl-4 pr-4">
+        <table class="table ml-2 mr-2 table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Medicine Name</th>
+                <th scope="col">Medicine Description</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price(₹)</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let medicine of Items">
+                <td class="align-middle">{{medicine.medicineName}}</td>
+                <td class="align-middle">
+                {{medicine.description}}
+                </td>
+                <td class="align-middle">{{medicine.quantity}}</td>
+                <td class="align-middle">{{medicine.price}}</td>
+                <td class="align-middle">
+                    <button type="button" class="btn btn-dark" (click)="openActionModal('Edit',medicine)">Edit</button>
+                    <button type="button" class="btn btn-info mt-2" (click)="openActionModal('Clone',medicine)">Clone</button>
+                    <button type="button" (click)="openDeleteMedicineDialog(medicine)" class="btn btn-danger mt-2">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
